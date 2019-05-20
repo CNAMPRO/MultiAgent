@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -49,25 +52,6 @@ public class MainActivity extends AppCompatActivity
     /**
      * Set les variables à utiliser par le drawer
      */
-    private void setItems(){
-        EditText speedText = (EditText) findViewById(R.id.itemsSpeed);
-        this.speed = Integer.parseInt(speedText.getText().toString());
-        EditText redText = (EditText) findViewById(R.id.redColor);
-        this.colorR = Integer.parseInt(redText.getText().toString());
-        EditText greenText = (EditText) findViewById(R.id.greenColor);
-        this.colorG = Integer.parseInt(greenText.getText().toString());
-        EditText blueText = (EditText) findViewById(R.id.blueColor);
-        this.colorB = Integer.parseInt(blueText.getText().toString());
-        EditText sizeText = (EditText) findViewById(R.id.itemSize);
-        this.size = Integer.parseInt(sizeText.getText().toString());
-        EditText tphText = (EditText) findViewById(R.id.tauxPheromones);
-        this.tauxPheromones = Integer.parseInt(tphText.getText().toString());
-        EditText nbNidsText = (EditText) findViewById(R.id.nbNids);
-        this.nbNids = Integer.parseInt(nbNidsText.getText().toString());
-
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,16 +60,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -119,11 +96,8 @@ public class MainActivity extends AppCompatActivity
 
         paint.setStrokeCap(Paint.Cap.ROUND);
 
-        //paint.setStrokeWidth(2);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
-        EditText sizeText = dialogView.findViewById(R.id.itemSize);
+        paint.setStrokeWidth(2);
 
-        paint.setStrokeWidth(Integer.parseInt(sizeText.getText().toString()));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,9 +111,13 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public String test = "2";
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        EditText sizeText = drawer.findViewById(R.id.itemSize);
+        test = sizeText.getText().toString();
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -156,12 +134,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
             return true;
         }
@@ -172,27 +152,30 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        EditText sizeText = drawer.findViewById(R.id.itemSize);
+        test = sizeText.getText().toString();
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     class SketchSheetView extends View {
-
+        Context myContext;
         public SketchSheetView(Context context) {
 
             super(context);
-
+            myContext = context;
             bitmap = Bitmap.createBitmap(820, 480, Bitmap.Config.ARGB_4444);
 
             canvas = new Canvas(bitmap);
 
 
             this.setBackgroundColor(Color.WHITE);
+
         }
 
         private ArrayList<DrawingClass> DrawingClassArrayList = new ArrayList<DrawingClass>();
@@ -203,6 +186,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
+
             if(!nidPose){
                 xPos = event.getX();
                 yPos = event.getY();
@@ -237,6 +221,8 @@ public class MainActivity extends AppCompatActivity
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
             paint.setColor(Color.MAGENTA);
+            paint.setStrokeWidth(Float.parseFloat(test));
+
             if (DrawingClassArrayList.size() > 0) {
 
                 canvas.drawPath(
