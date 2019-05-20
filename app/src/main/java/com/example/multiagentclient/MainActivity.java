@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity
     int rouge = 0;
     int vert = 0;
     int bleu = 0;
+    int txPhero = 2;
+    int vitesse = 10;
 
 
     /**
@@ -98,10 +100,14 @@ public class MainActivity extends AppCompatActivity
         EditText rougeText = drawer.findViewById(R.id.redColor);
         EditText vertText = drawer.findViewById(R.id.greenColor);
         EditText bleuText = drawer.findViewById(R.id.blueColor);
+        EditText txPheroText = drawer.findViewById(R.id.tauxPheromones);
+        EditText vitesseText = drawer.findViewById(R.id.itemsSpeed);
         taille = Float.parseFloat(sizeText.getText().toString());
         rouge = Integer.parseInt(rougeText.getText().toString());
         vert = Integer.parseInt(vertText.getText().toString());
         bleu = Integer.parseInt(bleuText.getText().toString());
+        txPhero = Integer.parseInt(txPheroText.getText().toString());
+        vitesse = Integer.parseInt(vitesseText.getText().toString());
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -205,6 +211,7 @@ public class MainActivity extends AppCompatActivity
                         DrawingClassArrayList.get(DrawingClassArrayList.size() - 1).getPaint());
             }
             if(nidPose){
+
                 canvas.drawCircle(xPos, yPos, 60, paint);
             }
 
