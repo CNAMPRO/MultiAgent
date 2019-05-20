@@ -78,12 +78,11 @@ public class MainActivity extends AppCompatActivity
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeWidth(2);
 
+        /** Clean du Canvas //TODO Fix need to click on canvas to clean it*/
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 path2.reset();
-
             }
         });
     }
@@ -177,22 +176,16 @@ public class MainActivity extends AppCompatActivity
             canvas.drawPath(path2, paint);
 
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
                 path2.moveTo(event.getX(), event.getY());
-
                 path2.lineTo(event.getX(), event.getY());
             }
             else if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
                 path2.lineTo(event.getX(), event.getY());
-
                 pathWithPaint.setPath(path2);
-
                 pathWithPaint.setPaint(paint);
-
                 DrawingClassArrayList.add(pathWithPaint);
             }
-
             invalidate();
             return true;
         }
