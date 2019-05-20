@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity
         this.nbNids = Integer.parseInt(nbNidsText.getText().toString());
 
     }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,8 +119,11 @@ public class MainActivity extends AppCompatActivity
 
         paint.setStrokeCap(Paint.Cap.ROUND);
 
-        paint.setStrokeWidth(2);
+        //paint.setStrokeWidth(2);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
+        EditText sizeText = dialogView.findViewById(R.id.itemSize);
 
+        paint.setStrokeWidth(Integer.parseInt(sizeText.getText().toString()));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,6 +191,7 @@ public class MainActivity extends AppCompatActivity
 
             canvas = new Canvas(bitmap);
 
+
             this.setBackgroundColor(Color.WHITE);
         }
 
@@ -196,7 +203,6 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-
             if(!nidPose){
                 xPos = event.getX();
                 yPos = event.getY();
@@ -230,6 +236,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
+            paint.setColor(Color.MAGENTA);
             if (DrawingClassArrayList.size() > 0) {
 
                 canvas.drawPath(
