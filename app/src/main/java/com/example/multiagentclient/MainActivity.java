@@ -8,11 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,13 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int CANVAS_WIDTH = 820;
+    private static final int CANVAS_HEIGHT = 480;
 
     ConstraintLayout relativeLayout;
     Paint paint;
@@ -90,9 +86,6 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
-
-
     }
 
 
@@ -159,7 +152,7 @@ public class MainActivity extends AppCompatActivity
 
             super(context);
             myContext = context;
-            bitmap = Bitmap.createBitmap(820, 480, Bitmap.Config.ARGB_4444);
+            bitmap = Bitmap.createBitmap(CANVAS_WIDTH, CANVAS_HEIGHT, Bitmap.Config.ARGB_4444);
             canvas = new Canvas(bitmap);
             this.setBackgroundColor(Color.WHITE);
 
