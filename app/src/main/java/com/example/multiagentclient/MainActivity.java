@@ -8,11 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,13 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int CANVAS_WIDTH = 820;
+    private static final int CANVAS_HEIGHT = 480;
 
     ConstraintLayout relativeLayout;
     Paint paint;
@@ -84,17 +80,13 @@ public class MainActivity extends AppCompatActivity
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeWidth(2);
 
+        /** Clean du Canvas //TODO Fix need to click on canvas to clean it*/
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 path2.reset();
-
             }
         });
-
-
-
     }
 
 
@@ -165,7 +157,7 @@ public class MainActivity extends AppCompatActivity
 
             super(context);
             myContext = context;
-            bitmap = Bitmap.createBitmap(820, 480, Bitmap.Config.ARGB_4444);
+            bitmap = Bitmap.createBitmap(CANVAS_WIDTH, CANVAS_HEIGHT, Bitmap.Config.ARGB_4444);
             canvas = new Canvas(bitmap);
             this.setBackgroundColor(Color.WHITE);
 
@@ -190,22 +182,16 @@ public class MainActivity extends AppCompatActivity
             canvas.drawPath(path2, paint);
 
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
                 path2.moveTo(event.getX(), event.getY());
-
                 path2.lineTo(event.getX(), event.getY());
             }
             else if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
                 path2.lineTo(event.getX(), event.getY());
-
                 pathWithPaint.setPath(path2);
-
                 pathWithPaint.setPaint(paint);
-
                 DrawingClassArrayList.add(pathWithPaint);
             }
-
             invalidate();
             return true;
         }
