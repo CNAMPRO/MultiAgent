@@ -40,13 +40,10 @@ public class MainActivity extends AppCompatActivity
     Bitmap bitmap;
     Canvas canvas;
     Button button;
-    Integer speed;
-    Integer size;
-    Integer colorR;
-    Integer colorG;
-    Integer colorB;
-    Integer tauxPheromones;
-    Integer nbNids;
+    float taille = 2;
+    float rouge = 0;
+    float vert = 0;
+    float bleu = 0;
 
 
     /**
@@ -111,13 +108,19 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public String test = "2";
+
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         EditText sizeText = drawer.findViewById(R.id.itemSize);
-        test = sizeText.getText().toString();
+        EditText rougeText = drawer.findViewById(R.id.redColor);
+        EditText vertText = drawer.findViewById(R.id.greenColor);
+        EditText bleuText = drawer.findViewById(R.id.blueColor);
+        taille = Float.parseFloat(sizeText.getText().toString());
+        rouge = Float.parseFloat(rougeText.getText().toString());
+        vert = Float.parseFloat(vertText.getText().toString());
+        bleu = Float.parseFloat(bleuText.getText().toString());
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -157,8 +160,6 @@ public class MainActivity extends AppCompatActivity
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        EditText sizeText = drawer.findViewById(R.id.itemSize);
-        test = sizeText.getText().toString();
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -221,7 +222,7 @@ public class MainActivity extends AppCompatActivity
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
             paint.setColor(Color.MAGENTA);
-            paint.setStrokeWidth(Float.parseFloat(test));
+            paint.setStrokeWidth(taille);
 
             if (DrawingClassArrayList.size() > 0) {
 
