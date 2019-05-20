@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberSigned"
-        android:text="255" />
+        android:text="0" />
 
     <TextView
         android:id="@+id/textViewRed2"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberSigned"
-        android:text="255" />
+        android:text="0" />
 
     <TextView
         android:id="@+id/textViewRed3"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberSigned"
-        android:text="255" />
+        android:text="0" />
 
     <TextView
         android:id="@+id/textViewRed4"
