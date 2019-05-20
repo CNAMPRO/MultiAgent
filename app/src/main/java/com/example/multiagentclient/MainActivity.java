@@ -21,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,35 @@ public class MainActivity extends AppCompatActivity
     Bitmap bitmap;
     Canvas canvas;
     Button button;
+    Integer speed;
+    Integer size;
+    Integer colorR;
+    Integer colorG;
+    Integer colorB;
+    Integer tauxPheromones;
+    Integer nbNids;
 
+
+    /**
+     * Set les variables à utiliser par le drawer
+     */
+    private void setItems(){
+        EditText speedText = (EditText) findViewById(R.id.itemsSpeed);
+        this.speed = Integer.parseInt(speedText.getText().toString());
+        EditText redText = (EditText) findViewById(R.id.redColor);
+        this.colorR = Integer.parseInt(redText.getText().toString());
+        EditText greenText = (EditText) findViewById(R.id.greenColor);
+        this.colorG = Integer.parseInt(greenText.getText().toString());
+        EditText blueText = (EditText) findViewById(R.id.blueColor);
+        this.colorB = Integer.parseInt(blueText.getText().toString());
+        EditText sizeText = (EditText) findViewById(R.id.itemSize);
+        this.size = Integer.parseInt(sizeText.getText().toString());
+        EditText tphText = (EditText) findViewById(R.id.tauxPheromones);
+        this.tauxPheromones = Integer.parseInt(tphText.getText().toString());
+        EditText nbNidsText = (EditText) findViewById(R.id.nbNids);
+        this.nbNids = Integer.parseInt(nbNidsText.getText().toString());
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +121,9 @@ public class MainActivity extends AppCompatActivity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 path2.reset();
+
             }
         });
 
@@ -191,7 +222,6 @@ public class MainActivity extends AppCompatActivity
 
                 DrawingClassArrayList.add(pathWithPaint);
             }
-
 
             invalidate();
             return true;
