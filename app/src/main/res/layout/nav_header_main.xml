@@ -25,7 +25,7 @@
         android:text="Red :" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/redColor"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -38,7 +38,7 @@
         android:text="Green :" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/greenColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,7 +51,7 @@
         android:text="Blue :" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/blueColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -64,7 +64,7 @@
         android:text="Taux de phéromones :" />
 
     <EditText
-        android:id="@+id/editText15"
+        android:id="@+id/tauxPheromones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -77,7 +77,7 @@
         android:text="Nombre de nids" />
 
     <EditText
-        android:id="@+id/editText16"
+        android:id="@+id/nbNids"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -90,7 +90,7 @@
         android:text="Taille :" />
 
     <EditText
-        android:id="@+id/editText17"
+        android:id="@+id/itemSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -103,7 +103,7 @@
         android:text="Vitesse :" />
 
     <EditText
-        android:id="@+id/editText18"
+        android:id="@+id/itemsSpeed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
