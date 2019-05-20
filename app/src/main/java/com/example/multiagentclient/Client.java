@@ -43,17 +43,17 @@ public class Client {
     /**
      * Sends the message entered by client to the server
      *
-     * @param message text entered by client
+     * //@param mmessage text entered by client
      */
-    public void sendMessage(final String message) {
+    public void sendNid( CBase nid) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (mBufferOut != null) {
+                /*if (mBufferOut != null) {
                     Log.d(TAG, "Sending: " + message);
                     mBufferOut.println(message);
                     mBufferOut.flush();
-                }
+                }*/
             }
         };
         Thread thread = new Thread(runnable);
