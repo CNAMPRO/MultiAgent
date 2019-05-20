@@ -92,9 +92,7 @@ public class MainActivity extends AppCompatActivity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 path2.reset();
-
             }
         });
 
@@ -161,11 +159,20 @@ public class MainActivity extends AppCompatActivity
 
         private ArrayList<DrawingClass> DrawingClassArrayList = new ArrayList<DrawingClass>();
 
+        public float xPos;
+        public float yPos;
+        public boolean nidPose = false;
+
         @Override
         public boolean onTouchEvent(MotionEvent event) {
 
+            if(!nidPose){
+                xPos = event.getX();
+                yPos = event.getY();
+                nidPose = true;
+            }
             DrawingClass pathWithPaint = new DrawingClass();
-
+            canvas.drawCircle(event.getX(), event.getY(), 60, paint);
             canvas.drawPath(path2, paint);
 
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -185,6 +192,7 @@ public class MainActivity extends AppCompatActivity
                 DrawingClassArrayList.add(pathWithPaint);
             }
 
+
             invalidate();
             return true;
         }
@@ -199,6 +207,10 @@ public class MainActivity extends AppCompatActivity
 
                         DrawingClassArrayList.get(DrawingClassArrayList.size() - 1).getPaint());
             }
+            if(nidPose){
+                canvas.drawCircle(xPos, yPos, 60, paint);
+            }
+
         }
     }
 
