@@ -29,7 +29,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="255" />
 
     <TextView
         android:id="@+id/textViewRed2"
@@ -42,7 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="255" />
 
     <TextView
         android:id="@+id/textViewRed3"
@@ -55,7 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="255" />
 
     <TextView
         android:id="@+id/textViewRed4"
@@ -68,7 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="2" />
 
     <TextView
         android:id="@+id/textViewRed5"
@@ -81,7 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="1" />
 
     <TextView
         android:id="@+id/textViewRed6"
@@ -94,7 +99,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="2" />
 
     <TextView
         android:id="@+id/textViewRed7"
@@ -107,6 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        android:text="10" />
 
 </LinearLayout>
