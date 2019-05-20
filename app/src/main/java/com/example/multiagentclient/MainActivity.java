@@ -67,32 +67,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
         relativeLayout = (ConstraintLayout) findViewById(R.id.layout_main);
-
         button = (Button)findViewById(R.id.button);
-
         view = new SketchSheetView(MainActivity.this);
-
         paint = new Paint();
-
         path2 = new Path();
-
         relativeLayout.addView(view, new ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.MATCH_PARENT,                ConstraintLayout.LayoutParams.MATCH_PARENT));
 
         paint.setDither(true);
-
         paint.setColor(Color.parseColor("#000000"));
-
         paint.setStyle(Paint.Style.STROKE);
-
         paint.setStrokeJoin(Paint.Join.ROUND);
-
         paint.setStrokeCap(Paint.Cap.ROUND);
-
         paint.setStrokeWidth(2);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -109,8 +96,10 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
+    /**
+     * Déclenche les changements et récupère les nouvelles valeurs des champs d'input
+     */
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         EditText sizeText = drawer.findViewById(R.id.itemSize);
@@ -171,10 +160,7 @@ public class MainActivity extends AppCompatActivity
             super(context);
             myContext = context;
             bitmap = Bitmap.createBitmap(820, 480, Bitmap.Config.ARGB_4444);
-
             canvas = new Canvas(bitmap);
-
-
             this.setBackgroundColor(Color.WHITE);
 
         }
