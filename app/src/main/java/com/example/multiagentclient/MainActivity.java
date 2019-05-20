@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity
     Canvas canvas;
     Button button;
     float taille = 2;
-    float rouge = 0;
-    float vert = 0;
-    float bleu = 0;
+    int rouge = 0;
+    int vert = 0;
+    int bleu = 0;
 
 
     /**
@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity
         EditText vertText = drawer.findViewById(R.id.greenColor);
         EditText bleuText = drawer.findViewById(R.id.blueColor);
         taille = Float.parseFloat(sizeText.getText().toString());
-        rouge = Float.parseFloat(rougeText.getText().toString());
-        vert = Float.parseFloat(vertText.getText().toString());
-        bleu = Float.parseFloat(bleuText.getText().toString());
+        rouge = Integer.parseInt(rougeText.getText().toString());
+        vert = Integer.parseInt(vertText.getText().toString());
+        bleu = Integer.parseInt(bleuText.getText().toString());
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -221,7 +221,8 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            paint.setColor(Color.MAGENTA);
+            int color = Color.argb(255,rouge, vert, bleu);
+            paint.setColor(color);
             paint.setStrokeWidth(taille);
 
             if (DrawingClassArrayList.size() > 0) {
