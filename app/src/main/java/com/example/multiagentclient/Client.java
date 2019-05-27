@@ -99,6 +99,7 @@ public class Client {
         mServerMessage = null;
     }
 
+    // Main execution
     public void run() {
 
         mRun = true;
@@ -146,10 +147,12 @@ public class Client {
     public interface OnMessageReceived {
         public void messageReceived(String message);
     }
-
+    // parse the JSON String to a JSON Object.
   /*  public JSONObject readJson(String json){         pas indispensable
         JSONObject jsonfile = new JSONObject(json);
     }*/
+
+  //    Draw a point on a canvas at a specific position.
     public void setPoint(JSONArray listPoint, Canvas canvas){
         for(int i=0; i<listPoint.length();i++) {
             // canvas.drawPoint(listPoint[i]["x"]["y"]);
