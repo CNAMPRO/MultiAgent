@@ -1,5 +1,9 @@
 package com.example.multiagentclient;
+import android.graphics.Canvas;
 import android.util.Log;
+
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInput;
@@ -16,6 +20,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+
+import org.json.JSONArray;
 
 
 public class Client {
@@ -141,4 +147,12 @@ public class Client {
         public void messageReceived(String message);
     }
 
+  /*  public JSONObject readJson(String json){         pas indispensable
+        JSONObject jsonfile = new JSONObject(json);
+    }*/
+    public void setPoint(JSONArray listPoint, Canvas canvas){
+        for(int i=0; i<listPoint.length();i++) {
+            // canvas.drawPoint(listPoint[i]["x"]["y"]);
+        }
+    }
 }

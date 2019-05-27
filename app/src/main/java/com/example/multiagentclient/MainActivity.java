@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity
             paint.setColor(color);
             paint.setStrokeWidth(taille);
 
+
             if (DrawingClassArrayList.size() > 0) {
 
                 canvas.drawPath(
