@@ -18,8 +18,8 @@ import java.io.OutputStream;
 public class Client {
 
     public static final String TAG = Client.class.getSimpleName();
-    public static final String SERVER_IP = "127.0.0.0"; //server IP address
-    public static final int SERVER_PORT = 1234;
+    public static final String SERVER_IP = "193.49.96.14"; //server IP address
+    public static final int SERVER_PORT = 5230;
     // message to send to the server
     private String mServerMessage;
     // sends message received notifications
@@ -34,8 +34,8 @@ public class Client {
     /**
      * Constructor of the class. OnMessagedReceived listens for the messages received from server
      */
-    public Client(OnMessageReceived listener) {
-        mMessageListener = listener;
+    public Client(/*OnMessageReceived listener*/) {
+       // mMessageListener = listener;
     }
 
     /**
@@ -96,13 +96,13 @@ public class Client {
 
         try {
             //here you must put your computer's IP address.
-            InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+         //   InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
 
             Log.d("TCP Client", "C: Connecting...");
 
             //create a socket to make the connection with the server
-            Socket socket = new Socket(serverAddr, SERVER_PORT);
-
+            Socket socket = new Socket(SERVER_IP, SERVER_PORT);
+            Log.d("test",socket.toString());
             try {
 
                 //sends the message to the server

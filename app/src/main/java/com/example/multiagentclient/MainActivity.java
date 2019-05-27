@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.constraint.ConstraintLayout;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,6 +51,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -87,6 +92,10 @@ public class MainActivity extends AppCompatActivity
                 path2.reset();
             }
         });
+
+
+        Client client = new Client();
+        client.run();
     }
 
 
