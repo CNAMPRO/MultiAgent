@@ -2,6 +2,9 @@ package com.example.multiagentclient;
 import android.util.Log;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -18,8 +21,8 @@ import java.io.OutputStream;
 public class Client {
 
     public static final String TAG = Client.class.getSimpleName();
-    public static final String SERVER_IP = "193.49.96.14"; //server IP address
-    public static final int SERVER_PORT = 5230;
+    public static final String SERVER_IP = "192.168.43.146"; //server IP address  193.49.96.14
+    public static final int SERVER_PORT = 40000;
     // message to send to the server
     private String mServerMessage;
     // sends message received notifications
@@ -96,33 +99,26 @@ public class Client {
 
         try {
             //here you must put your computer's IP address.
-         //   InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+            //InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
 
-            Log.d("TCP Client", "C: Connecting...");
+
 
             //create a socket to make the connection with the server
             Socket socket = new Socket(SERVER_IP, SERVER_PORT);
-            Log.d("test",socket.toString());
+
+
+
             try {
 
-                //sends the message to the server
-                mBufferOut = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+                String message = dataInputStream.readUTF();
 
-                //receives the message which the server sends back
-                mBufferIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                System.out.println(message);
 
 
-                //in this while the client listens for the messages sent by the server
-                while (mRun) {
 
-                    mServerMessage = mBufferIn.readLine();
-
-                    if (mServerMessage != null && mMessageListener != null) {
-                        //call the method messageReceived from MyActivity class
-                        mMessageListener.messageReceived(mServerMessage);
-                    }
-
-                }
+                //DataOutputStream outputTrame = new DataOutputStream(socket.getOutputStream());
 
                 Log.d("RESPONSE FROM SERVER", "S: Received Message: '" + mServerMessage + "'");
 
