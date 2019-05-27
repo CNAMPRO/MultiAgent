@@ -8,14 +8,12 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import android.util.Log;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.Socket;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+
 
 public class Client {
 
@@ -49,15 +47,29 @@ public class Client {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                /*if (mBufferOut != null) {
-                    Log.d(TAG, "Sending: " + message);
-                    mBufferOut.println(message);
-                    mBufferOut.flush();
-                }*/
+               // if (mBufferOut != null) {
+                //    Log.d(TAG, "Sending: " + message);
+                  //  mBufferOut.println(message);
+                   // mBufferOut.flush();
+                //}
             }
         };
         Thread thread = new Thread(runnable);
         thread.start();
+    }
+
+    private CEnvironement readObject(ObjectInputStream in) throws IOException,ClassNotFoundException {
+        in.defaultReadObject();
+        CEnvironement env = (CEnvironement)in.readObject();
+        return env ;
+    }
+
+    public void sendObject(CBase object,OutputStream outputStream ) throws IOException{
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+        System.out.println("Sending messages to the ServerSocket");
+        objectOutputStream.writeObject(object);
+        objectOutputStream.flush();
+        System.out.println("Closing socket and terminating program.");
     }
 
     /**
